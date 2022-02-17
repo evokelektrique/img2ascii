@@ -28,4 +28,24 @@ class Result {
         fclose($fh);
         return $this;
     }
+
+    /**
+     * Print out the result
+     * 
+     * @param  string $line_ending Character at the end of each line
+     * @return string              Ascii
+     */
+    public function output(string $line_ending = "\n"): string {
+        $result = "";
+        
+        foreach($this->ascii as $line) {
+            foreach($line as $value) {
+                $value = $this->transformValue($value);
+                $result .= $value;
+            }
+            $result .= $line_ending;
+        }
+
+        return $result;
+    }
 }
