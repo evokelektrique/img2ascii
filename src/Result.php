@@ -11,8 +11,8 @@ namespace Img2Ascii;
 
 class Result {
     public $ascii;
-    public function __construct(&$ascii) {
-        $this->ascii =& $ascii;
+    public function __construct($ascii) {
+        $this->ascii = $ascii;
     }
 
     public function writeFile($path, $lineEnding = "\n") {
@@ -37,7 +37,7 @@ class Result {
      */
     public function output(string $line_ending = "\n"): string {
         $result = "";
-        
+
         foreach($this->ascii as $line) {
             foreach($line as $value) {
                 $value = $this->transformValue($value);
